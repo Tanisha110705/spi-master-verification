@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="700" viewBox="0 0 1160 700" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/>
+    </marker>
+    <style>
+      .t{fill:#1f2328}.s{fill:#57606a;font-size:11.5px}
+      .m{font-family:Menlo,Consolas,monospace;font-size:11px;fill:#1f2328}
+      .p{font-family:Menlo,Consolas,monospace;font-size:12px;fill:#1f2328}
+      .w{stroke:#1f2328;stroke-width:1.4;fill:none}
+      .blk{fill:#ffffff;stroke:#57606a;stroke-width:1.3}
+      .hd{font-weight:bold;fill:#1f2328}
+    </style>
+  </defs>
+  <rect width="1160" height="700" fill="#ffffff"/>
+  <text x="20" y="28" font-size="16" font-weight="bold" class="t">DUT block diagram: SPI_Master_With_Single_CS</text>
+  <text x="20" y="48" class="s">Drawn from rtl/SPI_Master_With_Single_CS.v and rtl/SPI_Master.v. Only blocks and registers present in the RTL are shown. All sequential logic: posedge i_Clk, async reset on negedge i_Rst_L.</text>
+
+  <!-- top-level module -->
+  <rect x="250" y="70" width="710" height="610" rx="6" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.6"/>
+  <text x="265" y="92" class="hd">SPI_Master_With_Single_CS</text>
+  <text x="470" y="92" class="m">#(SPI_MODE, CLKS_PER_HALF_BIT, MAX_BYTES_PER_CS, CS_INACTIVE_CLKS)</text>
+
+  <!-- CS FSM -->
+  <rect x="270" y="110" width="360" height="175" rx="4" class="blk"/>
+  <text x="285" y="132" class="hd">CS control state machine</text>
+  <text x="285" y="153" class="m">r_SM_CS : IDLE → TRANSFER → CS_INACTIVE</text>
+  <text x="285" y="171" class="m">r_CS_n              → o_SPI_CS_n</text>
+  <text x="285" y="189" class="m">r_TX_Count          bytes left in this CS-low</text>
+  <text x="285" y="207" class="m">r_CS_Inactive_Count CS-high hold counter</text>
+  <text x="285" y="230" class="s">IDLE: first i_TX_DV drives CS low, loads i_TX_Count − 1</text>
+  <text x="285" y="247" class="s">TRANSFER: CS stays low until the last byte completes</text>
+  <text x="285" y="264" class="s">CS_INACTIVE: CS high for CS_INACTIVE_CLKS, then IDLE</text>
+
+  <!-- TX ready -->
+  <rect x="650" y="110" width="290" height="85" rx="4" class="blk"/>
+  <text x="665" y="132" class="hd">o_TX_Ready (combinational)</text>
+  <text x="665" y="153" class="m">( IDLE | (TRANSFER &amp; w_Master_Ready</text>
+  <text x="665" y="170" class="m">         &amp; r_TX_Count &gt; 0) )</text>
+  <text x="665" y="187" class="m">&amp; ~i_TX_DV</text>
+
+  <!-- RX counter -->
+  <rect x="650" y="205" width="290" height="80" rx="4" class="blk"/>
+  <text x="665" y="227" class="hd">RX byte counter</text>
+  <text x="665" y="248" class="m">o_RX_Count = 0 while CS is high</text>
+  <text x="665" y="266" class="m">o_RX_Count + 1 on each o_RX_DV</text>
+
+  <!-- SPI_Master instance -->
+  <rect x="270" y="320" width="670" height="340" rx="5" fill="#ffffff" stroke="#0969da" stroke-width="1.6"/>
+  <text x="285" y="342" class="hd" style="fill:#0969da">SPI_Master_Inst : SPI_Master #(SPI_MODE, CLKS_PER_HALF_BIT)</text>
+  <text x="285" y="362" class="m">w_CPOL = (SPI_MODE == 2) | (SPI_MODE == 3)     w_CPHA = (SPI_MODE == 1) | (SPI_MODE == 3)</text>
+
+  <!-- left column -->
+  <rect x="285" y="378" width="300" height="55" rx="4" class="blk"/>
+  <text x="300" y="399" class="hd">TX byte register</text>
+  <text x="300" y="420" class="m">r_TX_Byte, r_TX_DV  (loaded on i_TX_DV)</text>
+
+  <rect x="285" y="445" width="300" height="130" rx="4" class="blk"/>
+  <text x="300" y="466" class="hd">SPI clock / edge generator</text>
+  <text x="300" y="486" class="m">r_SPI_Clk_Count  0 .. 2·CLKS_PER_HALF_BIT−1</text>
+  <text x="300" y="503" class="m">r_SPI_Clk_Edges  16 edges per byte</text>
+  <text x="300" y="520" class="m">r_Leading_Edge, r_Trailing_Edge</text>
+  <text x="300" y="537" class="m">r_SPI_Clk        resets to w_CPOL</text>
+  <text x="300" y="557" class="s">w_Master_Ready = internal o_TX_Ready</text>
+  <text x="300" y="570" class="s">(high when no edges remain)</text>
+
+  <!-- right column -->
+  <rect x="610" y="378" width="315" height="82" rx="4" class="blk"/>
+  <text x="625" y="399" class="hd">MOSI bit select (MSB first)</text>
+  <text x="625" y="418" class="m">o_SPI_MOSI &lt;= r_TX_Byte[r_TX_Bit_Count]</text>
+  <text x="625" y="436" class="s">CPHA=0: bit 7 set at start, next bits on trailing edge</text>
+  <text x="625" y="452" class="s">CPHA=1: each bit set on a leading edge</text>
+
+  <rect x="610" y="470" width="315" height="50" rx="4" class="blk"/>
+  <text x="625" y="490" class="hd">Clock alignment register</text>
+  <text x="625" y="509" class="m">o_SPI_Clk &lt;= r_SPI_Clk  (one i_Clk later)</text>
+
+  <rect x="610" y="530" width="315" height="115" rx="4" class="blk"/>
+  <text x="625" y="551" class="hd">MISO capture</text>
+  <text x="625" y="571" class="m">o_RX_Byte[r_RX_Bit_Count] &lt;= i_SPI_MISO</text>
+  <text x="625" y="590" class="s">CPHA=0: sampled on leading edge</text>
+  <text x="625" y="606" class="s">CPHA=1: sampled on trailing edge</text>
+  <text x="625" y="622" class="s">o_RX_DV: one-cycle pulse after bit 0</text>
+  <text x="625" y="638" class="s">bit counters reset to 7 while ready</text>
+
+  <!-- internal connections -->
+  <path d="M585,405 L610,405" class="w" marker-end="url(#a)"/>
+  <path d="M585,470 L598,470 L598,440 L610,440" class="w" marker-end="url(#a)"/>
+  <path d="M585,495 L610,495" class="w" marker-end="url(#a)"/>
+  <path d="M585,560 L610,560" class="w" marker-end="url(#a)"/>
+  <!-- w_Master_Ready up to FSM and TX ready -->
+  <path d="M285,510 L262,510 L262,300 L640,300 L640,152 L650,152" class="w" marker-end="url(#a)"/>
+  <path d="M450,300 L450,285" class="w" marker-end="url(#a)"/>
+  <text x="272" y="314" class="s">w_Master_Ready</text>
+
+  <!-- inputs -->
+  <g class="p">
+    <text x="16" y="146">i_Clk</text>
+    <text x="16" y="176">i_Rst_L</text>
+    <text x="16" y="206">i_TX_Count</text>
+    <text x="16" y="236">i_TX_DV</text>
+    <text x="16" y="401">i_TX_Byte [7:0]</text>
+    <text x="16" y="626">i_SPI_MISO</text>
+  </g>
+  <text x="16" y="220" class="s">[$clog2(MAX_BYTES_PER_CS+1)-1:0]</text>
+  <path d="M120,142 L270,142" class="w" marker-end="url(#a)"/>
+  <path d="M120,172 L270,172" class="w" marker-end="url(#a)"/>
+  <path d="M220,202 L270,202" class="w" marker-end="url(#a)"/>
+  <path d="M120,232 L270,232" class="w" marker-end="url(#a)"/>
+  <path d="M235,232 L235,392 L285,392" class="w" marker-end="url(#a)"/>
+  <circle cx="235" cy="232" r="2.6" fill="#1f2328"/>
+  <path d="M140,397 L225,397 L225,414 L285,414" class="w" marker-end="url(#a)"/>
+  <path d="M100,622 L610,622" class="w" marker-end="url(#a)"/>
+
+  <!-- outputs -->
+  <g class="p">
+    <text x="985" y="146">o_TX_Ready</text>
+    <text x="985" y="249">o_RX_Count</text>
+    <text x="985" y="296">o_SPI_CS_n</text>
+    <text x="985" y="422">o_SPI_MOSI</text>
+    <text x="985" y="499">o_SPI_Clk</text>
+    <text x="985" y="575">o_RX_Byte [7:0]</text>
+    <text x="985" y="657">o_RX_DV</text>
+  </g>
+  <path d="M940,142 L980,142" class="w" marker-end="url(#a)"/>
+  <path d="M940,245 L980,245" class="w" marker-end="url(#a)"/>
+  <path d="M630,277 L630,292 L980,292" class="w" marker-end="url(#a)"/>
+  <path d="M925,418 L980,418" class="w" marker-end="url(#a)"/>
+  <path d="M925,495 L980,495" class="w" marker-end="url(#a)"/>
+  <path d="M925,571 L980,571" class="w" marker-end="url(#a)"/>
+  <path d="M925,622 L950,622 L950,653 L980,653" class="w" marker-end="url(#a)"/>
+</svg>

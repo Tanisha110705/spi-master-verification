@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800" font-family="Helvetica, Arial, sans-serif" font-size="13">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/></marker></defs>
+<rect width="1000" height="800" fill="#ffffff"/>
+<text x="20" y="28" font-size="16" font-weight="bold" fill="#1f2328">Verification flow (as implemented in tb/test.sv and the Questa runs)</text>
+<text x="20" y="47" font-size="12" fill="#57606a">One simulation per SPI_MODE value. Inside a run, the initial block repeats reset → generate → transact → check.</text>
+<rect x="60" y="70" width="880" height="54" rx="5" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.3"/>
+<text x="76" y="92" font-weight="bold" fill="#1f2328">1. Test configuration</text>
+<text x="76" y="111" font-size="11.5" fill="#57606a">spi_test_top parameters: SPI_MODE ∈ {0,1,2,3} (one run each), CLKS_PER_HALF_BIT=5, MAX_BYTES_PER_CS=5, CS_INACTIVE_CLKS=10</text>
+<line x1="500.0" y1="124" x2="500.0" y2="142" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="142" width="880" height="54" rx="5" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.3"/>
+<text x="76" y="164" font-weight="bold" fill="#1f2328">2. Reset  —  reset()</text>
+<text x="76" y="183" font-size="11.5" fill="#57606a">i_Rst_L low for 2 i_Clk cycles, all DUT inputs idled, 10-cycle settle</text>
+<line x1="500.0" y1="196" x2="500.0" y2="214" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="214" width="880" height="54" rx="5" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.3"/>
+<text x="76" y="236" font-weight="bold" fill="#1f2328">3. Generate transaction  —  value_generation()</text>
+<text x="76" y="255" font-size="11.5" fill="#57606a">tx_count = rx_count = $urandom_range(1, MAX_BYTES_PER_CS); tx_byte[$], rx_byte[$] random 0..255; cb.i_TX_Count ← tx_count</text>
+<line x1="500.0" y1="268" x2="500.0" y2="286" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="286" width="880" height="54" rx="5" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.3"/>
+<text x="76" y="308" font-weight="bold" fill="#1f2328">4. Drive DUT  +  slave response  —  test(): TX_THREAD, MISO_THREAD</text>
+<text x="76" y="327" font-size="11.5" fill="#57606a">send_byte() per TX byte (o_TX_Ready / i_TX_DV handshake); send_miso() per RX byte, edge-aligned to o_SPI_Clk</text>
+<line x1="500.0" y1="340" x2="500.0" y2="358" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="358" width="880" height="54" rx="5" fill="#fff8c5" stroke="#9a6700" stroke-width="1.3"/>
+<text x="76" y="380" font-weight="bold" fill="#1f2328">5. SPI transfer (DUT)</text>
+<text x="76" y="399" font-size="11.5" fill="#57606a">CS_n low for all tx_count bytes; 16 SCLK edges per byte; MOSI shifted out, MISO captured simultaneously</text>
+<line x1="500.0" y1="412" x2="500.0" y2="430" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="430" width="880" height="54" rx="5" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.3"/>
+<text x="76" y="452" font-weight="bold" fill="#1f2328">6. Monitor activity  —  MOSI_MON_THREAD, RX_MON_THREAD</text>
+<text x="76" y="471" font-size="11.5" fill="#57606a">check_mosi(): 8 o_SPI_MOSI samples on o_SPI_Clk edges; check_rx(): o_RX_Byte at each posedge o_RX_DV</text>
+<line x1="500.0" y1="484" x2="500.0" y2="502" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="502" width="880" height="54" rx="5" fill="#ddf4ff" stroke="#0969da" stroke-width="1.3"/>
+<text x="76" y="524" font-weight="bold" fill="#1f2328">7. Compare expected vs actual</text>
+<text x="76" y="543" font-size="11.5" fill="#57606a">MOSI: observed === tx_byte[j];  RX: o_RX_Byte === rx_byte[i] (or rx_byte[i]−1, see known issues)</text>
+<line x1="500.0" y1="556" x2="500.0" y2="574" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="574" width="880" height="54" rx="5" fill="#ddf4ff" stroke="#0969da" stroke-width="1.3"/>
+<text x="76" y="596" font-weight="bold" fill="#1f2328">8. Record result</text>
+<text x="76" y="615" font-size="11.5" fill="#57606a">match → $display(&quot;PASS: …&quot;);  mismatch → $error(&quot;FAIL: …&quot;) (counted as an error by the simulator)</text>
+<line x1="500.0" y1="628" x2="500.0" y2="646" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="646" width="880" height="54" rx="5" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.3"/>
+<text x="76" y="668" font-weight="bold" fill="#1f2328">9. Return to idle</text>
+<text x="76" y="687" font-size="11.5" fill="#57606a">wait o_TX_Ready === 1 and o_SPI_CS_n === 1, then CS_INACTIVE_CLKS cycles; print &quot;TEST n COMPLETE&quot;</text>
+<line x1="500.0" y1="700" x2="500.0" y2="718" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="60" y="718" width="880" height="54" rx="5" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.3"/>
+<text x="76" y="740" font-weight="bold" fill="#1f2328">10. Coverage / report</text>
+<text x="76" y="759" font-size="11.5" fill="#57606a">after $finish: coverage report -details; coverage save spi_cov_modeN.ucdb; the four UCDBs are viewed together in the Questa Coverage Report</text>
+<path d="M60,673.0 L30,673.0 L30,169.0 L60,169.0" fill="none" stroke="#1a7f37" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="24" y="421.0" font-size="11.5" fill="#1a7f37" text-anchor="middle" transform="rotate(-90 24 421.0)">repeat (N): N = 200 in the code listing; the recorded runs show 5 iterations</text>
+<text x="60" y="794" font-size="11.5" fill="#cf222e">Note: "ALL TESTS COMPLETED SUCCESSFULLY" is printed unconditionally after the loop. Pass/fail is decided by the PASS/FAIL lines and the simulator error count.</text>
+</svg>

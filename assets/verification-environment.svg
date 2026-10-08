@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0969da"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a7f37"/>
+    </marker>
+    <style>
+      .t{fill:#1f2328}.s{fill:#57606a;font-size:11.5px}
+      .m{font-family:Menlo,Consolas,monospace;font-size:11px;fill:#1f2328}
+      .hd{font-weight:bold;fill:#1f2328}
+      .blk{fill:#ffffff;stroke:#57606a;stroke-width:1.3}
+      .stim{stroke:#1f2328;stroke-width:1.5;fill:none}
+      .obs{stroke:#0969da;stroke-width:1.5;fill:none}
+      .exp{stroke:#1a7f37;stroke-width:1.5;fill:none;stroke-dasharray:6 4}
+    </style>
+  </defs>
+  <rect width="1120" height="640" fill="#ffffff"/>
+  <text x="20" y="28" font-size="16" font-weight="bold" class="t">Verification environment (custom SystemVerilog, task-based; not UVM)</text>
+  <text x="20" y="47" class="s">All components below are tasks inside module spi_test (tb/test.sv), connected to the DUT through interface spi_io (tb/spi_io.sv), instantiated in spi_test_top (tb/spi_test_top.sv).</text>
+
+  <!-- module spi_test outline -->
+  <rect x="15" y="62" width="1090" height="268" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-dasharray="5 4"/>
+  <text x="25" y="79" class="s">module spi_test  (tb/test.sv)  —  test() forks TX_THREAD, MISO_THREAD, MOSI_MON_THREAD, RX_MON_THREAD per transaction</text>
+
+  <!-- Generator -->
+  <rect x="30" y="95" width="250" height="160" rx="4" class="blk"/>
+  <text x="45" y="117" class="hd">Generator</text>
+  <text x="45" y="135" class="m">value_generation()</text>
+  <text x="45" y="157" class="m">tx_count = $urandom_range(1,</text>
+  <text x="45" y="171" class="m">             MAX_BYTES_PER_CS)</text>
+  <text x="45" y="185" class="m">rx_count = tx_count</text>
+  <text x="45" y="205" class="m">tx_byte[$] ← $urandom_range(0,255)</text>
+  <text x="45" y="219" class="m">rx_byte[$] ← $urandom_range(0,255)</text>
+  <text x="45" y="241" class="s">"transaction" = count + two byte queues</text>
+
+  <!-- Driver column -->
+  <rect x="330" y="95" width="300" height="50" rx="4" class="blk"/>
+  <text x="345" y="116" class="hd">Driver: reset()</text>
+  <text x="345" y="134" class="m">i_Rst_L low 2 clk, inputs idled, wait 10 clk</text>
+
+  <rect x="330" y="155" width="300" height="65" rx="4" class="blk"/>
+  <text x="345" y="176" class="hd">Driver: send_byte(tx_byte[j])</text>
+  <text x="345" y="194" class="m">wait cb.o_TX_Ready; drive cb.i_TX_Byte,</text>
+  <text x="345" y="208" class="m">pulse cb.i_TX_DV for one i_Clk cycle</text>
+
+  <rect x="330" y="230" width="300" height="80" rx="4" class="blk"/>
+  <text x="345" y="251" class="hd">Slave model: send_miso(rx_byte[i])</text>
+  <text x="345" y="269" class="m">drives cb.i_SPI_MISO MSB first,</text>
+  <text x="345" y="283" class="m">one bit per o_SPI_Clk edge chosen</text>
+  <text x="345" y="297" class="m">from SPI_MODE (see spi-modes.md)</text>
+
+  <!-- Checker column -->
+  <rect x="690" y="95" width="370" height="95" rx="4" class="blk"/>
+  <text x="705" y="116" class="hd">Monitor + checker: check_mosi(tx_byte[j])</text>
+  <text x="705" y="135" class="m">8× @(posedge|negedge o_SPI_Clk):</text>
+  <text x="705" y="149" class="m">   observed[bit] = o_SPI_MOSI   (MSB first)</text>
+  <text x="705" y="167" class="m">observed === expected ?</text>
+  <text x="705" y="181" class="s">posedge for modes 0/1, negedge for modes 2/3</text>
+
+  <rect x="690" y="200" width="370" height="85" rx="4" class="blk"/>
+  <text x="705" y="221" class="hd">Monitor + checker: check_rx(rx_byte[i])</text>
+  <text x="705" y="240" class="m">@(posedge o_RX_DV):</text>
+  <text x="705" y="256" class="m">o_RX_Byte === expected || === expected−1 ?</text>
+  <text x="705" y="276" class="s" style="fill:#cf222e">"expected−1" tolerance: see docs/results.md, known issues</text>
+
+  <!-- Interface -->
+  <rect x="30" y="360" width="1030" height="92" rx="4" fill="#ddf4ff" stroke="#0969da" stroke-width="1.4"/>
+  <text x="45" y="381" class="hd">interface spi_io  #(MAX_BYTES_PER_CS)  (input bit i_Clk)  —  modport TB</text>
+  <text x="45" y="400" class="m">clocking cb @(posedge i_Clk):  output i_TX_Count, i_TX_Byte, i_TX_DV, i_SPI_MISO;</text>
+  <text x="45" y="415" class="m" xml:space="preserve">                               input  o_TX_Ready, o_RX_Count, o_RX_DV, o_RX_Byte, o_SPI_Clk, o_SPI_MOSI, o_SPI_CS_n</text>
+  <text x="45" y="436" class="m" xml:space="preserve">direct (non-cb) modport signals: output i_Rst_L;  input o_RX_Byte, o_RX_DV, o_SPI_Clk, o_SPI_CS_n, o_SPI_MOSI, o_TX_Ready</text>
+
+  <!-- DUT -->
+  <rect x="330" y="480" width="430" height="80" rx="4" fill="#fff8c5" stroke="#9a6700" stroke-width="1.4"/>
+  <text x="345" y="502" class="hd">DUT  UUT : SPI_Master_With_Single_CS</text>
+  <text x="345" y="522" class="m">SPI_MODE, CLKS_PER_HALF_BIT=5, MAX_BYTES_PER_CS=5,</text>
+  <text x="345" y="537" class="m">CS_INACTIVE_CLKS=10   (values from spi_test_top)</text>
+
+  <rect x="30" y="480" width="250" height="80" rx="4" class="blk"/>
+  <text x="45" y="502" class="hd">spi_test_top</text>
+  <text x="45" y="521" class="m">always #(MAIN_CLK_DELAY)</text>
+  <text x="45" y="535" class="m">  i_Clk = ~i_Clk;   (=5)</text>
+
+  <!-- Result -->
+  <rect x="810" y="480" width="250" height="80" rx="4" class="blk"/>
+  <text x="825" y="502" class="hd">Result reporting</text>
+  <text x="825" y="521" class="m">match    → $display("PASS: ...")</text>
+  <text x="825" y="537" class="m">mismatch → $error("FAIL: ...")</text>
+  <text x="825" y="553" class="m">"==== TEST n COMPLETE ===="</text>
+
+  <!-- generated values to driver / slave model (green dashed) -->
+  <path d="M280,135 L305,135 L305,180 L330,180" class="exp" marker-end="url(#g)"/>
+  <path d="M305,180 L305,262 L330,262" class="exp" marker-end="url(#g)"/>
+  <!-- generated expected values to checkers (green dashed) -->
+  <path d="M155,95 L155,88 L1085,88 L1085,140 L1060,140" class="exp" marker-end="url(#g)"/>
+  <path d="M1085,140 L1085,240 L1060,240" class="exp" marker-end="url(#g)"/>
+
+  <!-- stimulus (black) -->
+  <path d="M155,255 L155,360" class="stim" marker-end="url(#a)"/>
+  <text x="162" y="300" class="m">cb.i_TX_Count</text>
+  <path d="M630,120 L645,120 L645,360" class="stim" marker-end="url(#a)"/>
+  <path d="M630,190 L645,190" class="stim"/>
+  <text x="652" y="303" class="m">i_Rst_L, cb.i_TX_Byte, cb.i_TX_DV</text>
+  <path d="M420,310 L420,360" class="stim" marker-end="url(#a)"/>
+  <text x="427" y="345" class="m">cb.i_SPI_MISO</text>
+  <path d="M480,452 L480,480" class="stim" marker-end="url(#a)"/>
+  <text x="487" y="471" class="m">DUT inputs</text>
+  <path d="M155,480 L155,452" class="stim" marker-end="url(#a)"/>
+  <text x="162" y="471" class="m">i_Clk</text>
+
+  <!-- observation (blue) -->
+  <path d="M640,480 L640,452" class="obs" marker-end="url(#b)"/>
+  <text x="647" y="471" class="m" style="fill:#0969da">DUT outputs</text>
+  <path d="M870,360 L870,285" class="obs" marker-end="url(#b)"/>
+  <path d="M675,360 L675,150 L690,150" class="obs" marker-end="url(#b)"/>
+  <text x="1052" y="350" class="m" text-anchor="end" style="fill:#0969da">raw o_SPI_Clk, o_SPI_MOSI, o_RX_DV, o_RX_Byte</text>
+  <path d="M560,360 L560,310" class="obs" stroke-dasharray="4 3" marker-end="url(#b)"/>
+  
+  <!-- checker verdicts to reporting -->
+  <path d="M1060,165 L1098,165 L1098,520 L1060,520" class="stim" marker-end="url(#a)"/>
+  <path d="M1060,262 L1098,262" class="stim"/>
+
+  <!-- legend -->
+  <g transform="translate(30,590)">
+    <line x1="0" y1="0" x2="34" y2="0" class="stim" marker-end="url(#a)"/>
+    <text x="42" y="4" class="s">stimulus (TB → DUT)</text>
+    <line x1="190" y1="0" x2="224" y2="0" class="obs" marker-end="url(#b)"/>
+    <text x="232" y="4" class="s">observation (DUT → TB); dashed: edge/handshake synchronisation</text>
+    <line x1="640" y1="0" x2="674" y2="0" class="exp" marker-end="url(#g)"/>
+    <text x="682" y="4" class="s">expected / generated values (tx_byte[$], rx_byte[$])</text>
+  </g>
+  <text x="30" y="622" class="s">Dashed blue: send_miso() waits on o_SPI_Clk edges; send_byte() waits on cb.o_TX_Ready. Each check prints PASS via $display or FAIL via $error in the transcript.</text>
+</svg>

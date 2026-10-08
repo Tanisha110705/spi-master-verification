@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="640" viewBox="0 0 1120 640" font-family="Helvetica, Arial, sans-serif" font-size="13">
+<rect width="1120" height="640" fill="#ffffff"/>
+<text x="20" y="28" font-size="16" font-weight="bold" fill="#1f2328">SPI modes 0–3: protocol timing reference (conceptual, not a simulation capture)</text>
+<text x="20" y="48" font-size="12" fill="#57606a">MSB first, 8-bit frames as in SPI_Master. Only the first four bits are drawn. CPOL sets the SCLK idle level; CPHA selects whether data is sampled on the leading (CPHA=0) or trailing (CPHA=1) edge.</text>
+<rect x="20" y="70" width="520" height="240" rx="5" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="34" y="92" font-weight="bold" fill="#1f2328">Mode 0   CPOL=0  CPHA=0</text>
+<text x="34" y="110" font-size="12" fill="#57606a">SCLK idles low · sample on rising edge · data changes on falling edge</text>
+<text x="34" y="139" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">CS_n</text>
+<text x="34" y="189" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">SCLK</text>
+<text x="34" y="244" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">MOSI / MISO</text>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="132.0,123.0 150.5,123.0 150.5,145.0 490.9,145.0 490.9,123.0 516.8,123.0"/>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="132.0,195.0 169.0,195.0 169.0,173.0 206.0,173.0 206.0,195.0 243.0,195.0 243.0,173.0 280.0,173.0 280.0,195.0 317.0,195.0 317.0,173.0 354.0,173.0 354.0,195.0 391.0,195.0 391.0,173.0 428.0,173.0 428.0,195.0 516.8,195.0"/>
+<line x1="169.0" y1="153" x2="169.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="169.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="206.0" y1="153" x2="206.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="206.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="243.0" y1="153" x2="243.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="243.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="280.0" y1="153" x2="280.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="280.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="317.0" y1="153" x2="317.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="317.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="354.0" y1="153" x2="354.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="354.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="391.0" y1="153" x2="391.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="391.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="428.0" y1="153" x2="428.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="428.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="132.0" y1="239.0" x2="150.5" y2="239.0" stroke="#57606a" stroke-width="1.4"/>
+<polygon points="150.5,239.0 154.5,228 202.0,228 206.0,239.0 202.0,250 154.5,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="178.2" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b7</text>
+<polygon points="206.0,239.0 210.0,228 276.0,228 280.0,239.0 276.0,250 210.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="243.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b6</text>
+<polygon points="280.0,239.0 284.0,228 350.0,228 354.0,239.0 350.0,250 284.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="317.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b5</text>
+<polygon points="354.0,239.0 358.0,228 424.0,228 428.0,239.0 424.0,250 358.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="391.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b4</text>
+<polygon points="428.0,239.0 432.0,228 486.9,228 490.9,239.0 486.9,250 432.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="459.4" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">…</text>
+<line x1="490.9" y1="239.0" x2="516.8" y2="239.0" stroke="#57606a" stroke-width="1.4"/>
+<text x="34" y="296" font-size="11.5" fill="#57606a">CPHA=0: first bit must be valid before the first (leading) edge.</text>
+<rect x="580" y="70" width="520" height="240" rx="5" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="594" y="92" font-weight="bold" fill="#1f2328">Mode 1   CPOL=0  CPHA=1</text>
+<text x="594" y="110" font-size="12" fill="#57606a">SCLK idles low · sample on falling edge · data changes on rising edge</text>
+<text x="594" y="139" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">CS_n</text>
+<text x="594" y="189" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">SCLK</text>
+<text x="594" y="244" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">MOSI / MISO</text>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="692.0,123.0 710.5,123.0 710.5,145.0 1050.9,145.0 1050.9,123.0 1076.8,123.0"/>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="692.0,195.0 729.0,195.0 729.0,173.0 766.0,173.0 766.0,195.0 803.0,195.0 803.0,173.0 840.0,173.0 840.0,195.0 877.0,195.0 877.0,173.0 914.0,173.0 914.0,195.0 951.0,195.0 951.0,173.0 988.0,173.0 988.0,195.0 1076.8,195.0"/>
+<line x1="729.0" y1="153" x2="729.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="729.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="766.0" y1="153" x2="766.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="766.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="803.0" y1="153" x2="803.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="803.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="840.0" y1="153" x2="840.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="840.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="877.0" y1="153" x2="877.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="877.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="914.0" y1="153" x2="914.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="914.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="951.0" y1="153" x2="951.0" y2="260" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="951.0" y="274" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="988.0" y1="153" x2="988.0" y2="260" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="988.0" y="274" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="692.0" y1="239.0" x2="729.0" y2="239.0" stroke="#57606a" stroke-width="1.4"/>
+<polygon points="729.0,239.0 733.0,228 799.0,228 803.0,239.0 799.0,250 733.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="766.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b7</text>
+<polygon points="803.0,239.0 807.0,228 873.0,228 877.0,239.0 873.0,250 807.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="840.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b6</text>
+<polygon points="877.0,239.0 881.0,228 947.0,228 951.0,239.0 947.0,250 881.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="914.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b5</text>
+<polygon points="951.0,239.0 955.0,228 1021.0,228 1025.0,239.0 1021.0,250 955.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="988.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b4</text>
+<polygon points="1025.0,239.0 1029.0,228 1046.9,228 1050.9,239.0 1046.9,250 1029.0,250" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="1038.0" y="243.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">…</text>
+<line x1="1050.9" y1="239.0" x2="1076.8" y2="239.0" stroke="#57606a" stroke-width="1.4"/>
+<text x="594" y="296" font-size="11.5" fill="#57606a">CPHA=1: first bit is launched on the first (leading) edge.</text>
+<rect x="20" y="325" width="520" height="240" rx="5" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="34" y="347" font-weight="bold" fill="#1f2328">Mode 2   CPOL=1  CPHA=0</text>
+<text x="34" y="365" font-size="12" fill="#57606a">SCLK idles high · sample on falling edge · data changes on rising edge</text>
+<text x="34" y="394" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">CS_n</text>
+<text x="34" y="444" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">SCLK</text>
+<text x="34" y="499" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">MOSI / MISO</text>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="132.0,378.0 150.5,378.0 150.5,400.0 490.9,400.0 490.9,378.0 516.8,378.0"/>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="132.0,428.0 169.0,428.0 169.0,450.0 206.0,450.0 206.0,428.0 243.0,428.0 243.0,450.0 280.0,450.0 280.0,428.0 317.0,428.0 317.0,450.0 354.0,450.0 354.0,428.0 391.0,428.0 391.0,450.0 428.0,450.0 428.0,428.0 516.8,428.0"/>
+<line x1="169.0" y1="408" x2="169.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="169.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="206.0" y1="408" x2="206.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="206.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="243.0" y1="408" x2="243.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="243.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="280.0" y1="408" x2="280.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="280.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="317.0" y1="408" x2="317.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="317.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="354.0" y1="408" x2="354.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="354.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="391.0" y1="408" x2="391.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="391.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="428.0" y1="408" x2="428.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="428.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="132.0" y1="494.0" x2="150.5" y2="494.0" stroke="#57606a" stroke-width="1.4"/>
+<polygon points="150.5,494.0 154.5,483 202.0,483 206.0,494.0 202.0,505 154.5,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="178.2" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b7</text>
+<polygon points="206.0,494.0 210.0,483 276.0,483 280.0,494.0 276.0,505 210.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="243.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b6</text>
+<polygon points="280.0,494.0 284.0,483 350.0,483 354.0,494.0 350.0,505 284.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="317.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b5</text>
+<polygon points="354.0,494.0 358.0,483 424.0,483 428.0,494.0 424.0,505 358.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="391.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b4</text>
+<polygon points="428.0,494.0 432.0,483 486.9,483 490.9,494.0 486.9,505 432.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="459.4" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">…</text>
+<line x1="490.9" y1="494.0" x2="516.8" y2="494.0" stroke="#57606a" stroke-width="1.4"/>
+<text x="34" y="551" font-size="11.5" fill="#57606a">CPHA=0: first bit must be valid before the first (leading) edge.</text>
+<rect x="580" y="325" width="520" height="240" rx="5" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="594" y="347" font-weight="bold" fill="#1f2328">Mode 3   CPOL=1  CPHA=1</text>
+<text x="594" y="365" font-size="12" fill="#57606a">SCLK idles high · sample on rising edge · data changes on falling edge</text>
+<text x="594" y="394" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">CS_n</text>
+<text x="594" y="444" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">SCLK</text>
+<text x="594" y="499" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">MOSI / MISO</text>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="692.0,378.0 710.5,378.0 710.5,400.0 1050.9,400.0 1050.9,378.0 1076.8,378.0"/>
+<polyline fill="none" stroke="#1f2328" stroke-width="1.6" points="692.0,428.0 729.0,428.0 729.0,450.0 766.0,450.0 766.0,428.0 803.0,428.0 803.0,450.0 840.0,450.0 840.0,428.0 877.0,428.0 877.0,450.0 914.0,450.0 914.0,428.0 951.0,428.0 951.0,450.0 988.0,450.0 988.0,428.0 1076.8,428.0"/>
+<line x1="729.0" y1="408" x2="729.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="729.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="766.0" y1="408" x2="766.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="766.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="803.0" y1="408" x2="803.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="803.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="840.0" y1="408" x2="840.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="840.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="877.0" y1="408" x2="877.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="877.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="914.0" y1="408" x2="914.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="914.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="951.0" y1="408" x2="951.0" y2="515" stroke="#0969da" stroke-width="1.1" opacity="0.8" stroke-dasharray="3 3"/>
+<text x="951.0" y="529" text-anchor="middle" font-size="11" fill="#0969da">Δ</text>
+<line x1="988.0" y1="408" x2="988.0" y2="515" stroke="#cf222e" stroke-width="1.1" opacity="0.8"/>
+<text x="988.0" y="529" text-anchor="middle" font-size="11" fill="#cf222e">S</text>
+<line x1="692.0" y1="494.0" x2="729.0" y2="494.0" stroke="#57606a" stroke-width="1.4"/>
+<polygon points="729.0,494.0 733.0,483 799.0,483 803.0,494.0 799.0,505 733.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="766.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b7</text>
+<polygon points="803.0,494.0 807.0,483 873.0,483 877.0,494.0 873.0,505 807.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="840.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b6</text>
+<polygon points="877.0,494.0 881.0,483 947.0,483 951.0,494.0 947.0,505 881.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="914.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b5</text>
+<polygon points="951.0,494.0 955.0,483 1021.0,483 1025.0,494.0 1021.0,505 955.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="988.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">b4</text>
+<polygon points="1025.0,494.0 1029.0,483 1046.9,483 1050.9,494.0 1046.9,505 1029.0,505" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="1038.0" y="498.0" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="12" fill="#1f2328">…</text>
+<line x1="1050.9" y1="494.0" x2="1076.8" y2="494.0" stroke="#57606a" stroke-width="1.4"/>
+<text x="594" y="551" font-size="11.5" fill="#57606a">CPHA=1: first bit is launched on the first (leading) edge.</text>
+<text x="20" y="592" font-size="12" fill="#cf222e">S (solid red) = sampling edge</text>
+<text x="230" y="592" font-size="12" fill="#0969da">Δ (dashed blue) = data transition (launch) edge</text>
+<text x="20" y="614" font-size="12" fill="#57606a">Mapping used by rtl/SPI_Master.v: w_CPOL = SPI_MODE ∈ {2,3}, w_CPHA = SPI_MODE ∈ {1,3}; MISO captured on r_Leading_Edge when CPHA=0 and on r_Trailing_Edge when CPHA=1.</text>
+</svg>

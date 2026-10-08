@@ -1,0 +1,16 @@
+# Questa / ModelSim
+sim/work*/
+sim/transcript*
+sim/*.wlf
+sim/*.ucdb
+sim/spi_cov_report/
+sim/modelsim.ini
+*.vstf
+
+# Verilator cross-check
+sim/build_verilator_*/
+
+# Waveforms and Python
+*.vcd
+*.fst
+__pycache__/

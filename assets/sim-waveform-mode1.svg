@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1010" height="486" viewBox="0 0 1010 486" font-family="Helvetica, Arial, sans-serif" font-size="12">
+<rect width="1010" height="486" fill="#ffffff"/>
+<text x="16" y="24" font-size="15" font-weight="bold" fill="#1f2328">First transaction, SPI mode 1: DUT sends 0x59 on MOSI, slave model sends 0x77 on MISO (Verilator re-run)</text>
+<text x="16" y="44" fill="#57606a">SPI mode 1 (CPOL=0, CPHA=1). Dashed lines: o_SPI_Clk edges on which the DUT samples i_SPI_MISO (trailing edge). Time axis in simulation time units.</text>
+<line x1="251.9" y1="62" x2="251.9" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="349.7" y1="62" x2="349.7" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="447.4" y1="62" x2="447.4" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="545.1" y1="62" x2="545.1" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="642.8" y1="62" x2="642.8" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="740.6" y1="62" x2="740.6" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="838.3" y1="62" x2="838.3" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<line x1="936.0" y1="62" x2="936.0" y2="396" stroke="#cf222e" stroke-width="1" stroke-dasharray="4 3" opacity="0.7"/>
+<text x="110" y="89.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">i_TX_DV</text>
+<line x1="120" y1="104" x2="980" y2="104" stroke="#eaeef2"/>
+<polyline points="120.0,96.0 134.7,96.0 134.7,96.0 134.7,74.0 144.4,74.0 144.4,74.0 144.4,96.0 980.0,96.0" fill="none" stroke="#0969da" stroke-width="1.6"/>
+<text x="110" y="131.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">o_TX_Ready</text>
+<line x1="120" y1="146" x2="980" y2="146" stroke="#eaeef2"/>
+<polyline points="120.0,116.0 134.7,116.0 134.7,116.0 134.7,138.0 980.0,138.0" fill="none" stroke="#0969da" stroke-width="1.6"/>
+<text x="110" y="173.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">o_SPI_CS_n</text>
+<line x1="120" y1="188" x2="980" y2="188" stroke="#eaeef2"/>
+<polyline points="120.0,158.0 144.4,158.0 144.4,158.0 144.4,180.0 945.8,180.0 945.8,180.0 945.8,158.0 980.0,158.0" fill="none" stroke="#0969da" stroke-width="1.6"/>
+<text x="110" y="215.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">o_SPI_Clk</text>
+<line x1="120" y1="230" x2="980" y2="230" stroke="#eaeef2"/>
+<polyline points="120.0,222.0 203.1,222.0 203.1,222.0 203.1,200.0 251.9,200.0 251.9,200.0 251.9,222.0 300.8,222.0 300.8,222.0 300.8,200.0 349.7,200.0 349.7,200.0 349.7,222.0 398.5,222.0 398.5,222.0 398.5,200.0 447.4,200.0 447.4,200.0 447.4,222.0 496.2,222.0 496.2,222.0 496.2,200.0 545.1,200.0 545.1,200.0 545.1,222.0 594.0,222.0 594.0,222.0 594.0,200.0 642.8,200.0 642.8,200.0 642.8,222.0 691.7,222.0 691.7,222.0 691.7,200.0 740.6,200.0 740.6,200.0 740.6,222.0 789.4,222.0 789.4,222.0 789.4,200.0 838.3,200.0 838.3,200.0 838.3,222.0 887.2,222.0 887.2,222.0 887.2,200.0 936.0,200.0 936.0,200.0 936.0,222.0 980.0,222.0" fill="none" stroke="#0969da" stroke-width="1.6"/>
+<text x="110" y="257.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">o_SPI_MOSI</text>
+<line x1="120" y1="272" x2="980" y2="272" stroke="#eaeef2"/>
+<polyline points="120.0,264.0 300.8,264.0 300.8,264.0 300.8,242.0 398.5,242.0 398.5,242.0 398.5,264.0 496.2,264.0 496.2,264.0 496.2,242.0 691.7,242.0 691.7,242.0 691.7,264.0 887.2,264.0 887.2,264.0 887.2,242.0 980.0,242.0" fill="none" stroke="#0969da" stroke-width="1.6"/>
+<text x="110" y="299.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">i_SPI_MISO</text>
+<line x1="120" y1="314" x2="980" y2="314" stroke="#eaeef2"/>
+<polyline points="120.0,306.0 300.8,306.0 300.8,306.0 300.8,284.0 594.0,284.0 594.0,284.0 594.0,306.0 691.7,306.0 691.7,306.0 691.7,284.0 887.2,284.0 887.2,284.0 887.2,306.0 980.0,306.0" fill="none" stroke="#0969da" stroke-width="1.6"/>
+<text x="110" y="341.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">o_RX_DV</text>
+<line x1="120" y1="356" x2="980" y2="356" stroke="#eaeef2"/>
+<polyline points="120.0,348.0 936.0,348.0 936.0,348.0 936.0,326.0 945.8,326.0 945.8,326.0 945.8,348.0 980.0,348.0" fill="none" stroke="#0969da" stroke-width="1.6"/>
+<text x="110" y="383.0" text-anchor="end" font-family="Menlo, Consolas, monospace" fill="#1f2328">o_RX_Byte</text>
+<line x1="120" y1="398" x2="980" y2="398" stroke="#eaeef2"/>
+<polygon points="120.0,379.0 124.0,368.0 345.7,368.0 349.7,379.0 345.7,390.0 124.0,390.0" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="234.8" y="383.0" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">00</text>
+<polygon points="349.7,379.0 353.7,368.0 443.4,368.0 447.4,379.0 443.4,390.0 353.7,390.0" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="398.5" y="383.0" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">40</text>
+<polygon points="447.4,379.0 451.4,368.0 541.1,368.0 545.1,379.0 541.1,390.0 451.4,390.0" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="496.2" y="383.0" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">60</text>
+<polygon points="545.1,379.0 549.1,368.0 736.6,368.0 740.6,379.0 736.6,390.0 549.1,390.0" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="642.8" y="383.0" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">70</text>
+<polygon points="740.6,379.0 744.6,368.0 834.3,368.0 838.3,379.0 834.3,390.0 744.6,390.0" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="789.4" y="383.0" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">74</text>
+<polygon points="838.3,379.0 842.3,368.0 976.0,368.0 980.0,379.0 976.0,390.0 842.3,390.0" fill="#ddf4ff" stroke="#0969da" stroke-width="1.2"/>
+<text x="909.1" y="383.0" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">76</text>
+<line x1="120" y1="412" x2="980" y2="412" stroke="#57606a"/>
+<line x1="198.2" y1="412" x2="198.2" y2="417" stroke="#57606a"/>
+<text x="198.2" y="430" text-anchor="middle" fill="#57606a">200</text>
+<line x1="295.9" y1="412" x2="295.9" y2="417" stroke="#57606a"/>
+<text x="295.9" y="430" text-anchor="middle" fill="#57606a">300</text>
+<line x1="393.6" y1="412" x2="393.6" y2="417" stroke="#57606a"/>
+<text x="393.6" y="430" text-anchor="middle" fill="#57606a">400</text>
+<line x1="491.4" y1="412" x2="491.4" y2="417" stroke="#57606a"/>
+<text x="491.4" y="430" text-anchor="middle" fill="#57606a">500</text>
+<line x1="589.1" y1="412" x2="589.1" y2="417" stroke="#57606a"/>
+<text x="589.1" y="430" text-anchor="middle" fill="#57606a">600</text>
+<line x1="686.8" y1="412" x2="686.8" y2="417" stroke="#57606a"/>
+<text x="686.8" y="430" text-anchor="middle" fill="#57606a">700</text>
+<line x1="784.5" y1="412" x2="784.5" y2="417" stroke="#57606a"/>
+<text x="784.5" y="430" text-anchor="middle" fill="#57606a">800</text>
+<line x1="882.3" y1="412" x2="882.3" y2="417" stroke="#57606a"/>
+<text x="882.3" y="430" text-anchor="middle" fill="#57606a">900</text>
+<text x="16" y="458" fill="#cf222e">o_RX_Byte = 0x76 when o_RX_DV pulses: send_miso() returns i_SPI_MISO to 0 before the 8th trailing (falling) edge, so bit 0 is lost.</text>
+</svg>

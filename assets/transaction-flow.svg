@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="860" viewBox="0 0 1120 860" font-family="Helvetica, Arial, sans-serif" font-size="13">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2328"/></marker></defs>
+<rect width="1120" height="860" fill="#ffffff"/>
+<text x="20" y="28" font-size="16" font-weight="bold" fill="#1f2328">One transaction, cycle by cycle (sequence view)</text>
+<text x="20" y="47" font-size="12" fill="#57606a">Lifelines are the forked threads of test() and the DUT. Timestamps are from the mode-0 Questa transcript, test 1 (tx_count = 3).</text>
+<rect x="32" y="70" width="156" height="44" rx="4" fill="#f6f8fa" stroke="#8c959f"/>
+<text x="110" y="88" text-anchor="middle" font-weight="bold" fill="#1f2328">initial block</text>
+<text x="110" y="105" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">value_generation()</text>
+<line x1="110" y1="114" x2="110" y2="820" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="5 4"/>
+<rect x="212" y="70" width="156" height="44" rx="4" fill="#f6f8fa" stroke="#8c959f"/>
+<text x="290" y="88" text-anchor="middle" font-weight="bold" fill="#1f2328">TX_THREAD</text>
+<text x="290" y="105" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">send_byte()</text>
+<line x1="290" y1="114" x2="290" y2="820" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="5 4"/>
+<rect x="392" y="70" width="156" height="44" rx="4" fill="#fff8c5" stroke="#8c959f"/>
+<text x="470" y="88" text-anchor="middle" font-weight="bold" fill="#1f2328">DUT</text>
+<text x="470" y="105" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">UUT</text>
+<line x1="470" y1="114" x2="470" y2="820" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="5 4"/>
+<rect x="572" y="70" width="156" height="44" rx="4" fill="#f6f8fa" stroke="#8c959f"/>
+<text x="650" y="88" text-anchor="middle" font-weight="bold" fill="#1f2328">MISO_THREAD</text>
+<text x="650" y="105" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">send_miso()</text>
+<line x1="650" y1="114" x2="650" y2="820" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="5 4"/>
+<rect x="752" y="70" width="156" height="44" rx="4" fill="#f6f8fa" stroke="#8c959f"/>
+<text x="830" y="88" text-anchor="middle" font-weight="bold" fill="#1f2328">MOSI_MON_THREAD</text>
+<text x="830" y="105" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">check_mosi()</text>
+<line x1="830" y1="114" x2="830" y2="820" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="5 4"/>
+<rect x="932" y="70" width="156" height="44" rx="4" fill="#f6f8fa" stroke="#8c959f"/>
+<text x="1010" y="88" text-anchor="middle" font-weight="bold" fill="#1f2328">RX_MON_THREAD</text>
+<text x="1010" y="105" text-anchor="middle" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">check_rx()</text>
+<line x1="1010" y1="114" x2="1010" y2="820" stroke="#d0d7de" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="20" y="154" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">[115]</text>
+<path d="M110,142 L138,142 L138,158 L114,158" fill="none" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="146" y="154" font-size="11.5" fill="#1f2328" text-anchor="start">reset(): i_Rst_L 0→1, inputs idle</text>
+<text x="20" y="200" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">[125]</text>
+<line x1="110" y1="196" x2="464" y2="196" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="139.60000000000002" y="179" width="300.79999999999995" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="290.0" y="190" text-anchor="middle" font-size="11.5" fill="#1f2328">cb.i_TX_Count ← 3; tx_byte/rx_byte queues filled</text>
+<text x="20" y="246" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">[145]</text>
+<line x1="290" y1="242" x2="464" y2="242" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="186.9" y="225" width="386.2" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="380.0" y="236" text-anchor="middle" font-size="11.5" fill="#1f2328">wait cb.o_TX_Ready (IDLE ⇒ 1); i_TX_Byte = 0x26, i_TX_DV pulse</text>
+<path d="M470,280 L498,280 L498,296 L474,296" fill="none" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="506" y="292" font-size="11.5" fill="#1f2328" text-anchor="start">IDLE→TRANSFER: o_SPI_CS_n ← 0, r_TX_Count ← 2; 16 SCLK edges start</text>
+<line x1="470" y1="334" x2="1004" y2="334" stroke="#0969da" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#a)"/>
+<rect x="528.6" y="317" width="422.79999999999995" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="740.0" y="328" text-anchor="middle" font-size="11.5" fill="#0969da">o_SPI_CS_n == 0 releases MISO_THREAD, MOSI_MON_THREAD, RX_MON_THREAD</text>
+<line x1="650" y1="380" x2="476" y2="380" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="369.95000000000005" y="363" width="380.09999999999997" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="560.0" y="374" text-anchor="middle" font-size="11.5" fill="#1f2328">i_SPI_MISO: bits of rx_byte[0] = 0xC6, one per o_SPI_Clk edge</text>
+<line x1="470" y1="426" x2="824" y2="426" stroke="#0969da" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#a)"/>
+<rect x="527.05" y="409" width="245.89999999999998" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="650.0" y="420" text-anchor="middle" font-size="11.5" fill="#0969da">o_SPI_MOSI sampled on 8 o_SPI_Clk edges</text>
+<text x="20" y="476" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">[905]</text>
+<path d="M830,464 L858,464 L858,480 L834,480" fill="none" stroke="#1a7f37" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="866" y="476" font-size="11.5" fill="#1a7f37" text-anchor="start">observed === 0x26 → PASS: MOSI correct</text>
+<line x1="470" y1="518" x2="1004" y2="518" stroke="#0969da" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#a)"/>
+<rect x="662.8" y="501" width="154.39999999999998" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="740.0" y="512" text-anchor="middle" font-size="11.5" fill="#0969da">o_RX_DV pulse, o_RX_Byte</text>
+<text x="20" y="568" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">[905]</text>
+<path d="M1010,556 L982,556 L982,572 L1006,572" fill="none" stroke="#1a7f37" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="974" y="568" font-size="11.5" fill="#1a7f37" text-anchor="end">compare with 0xC6 → PASS: RX data correct</text>
+<line x1="470" y1="610" x2="296" y2="610" stroke="#0969da" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#a)"/>
+<rect x="183.85000000000002" y="593" width="392.29999999999995" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="380.0" y="604" text-anchor="middle" font-size="11.5" fill="#0969da">w_Master_Ready &amp; r_TX_Count &gt; 0 ⇒ o_TX_Ready = 1 (CS stays low)</text>
+<text x="20" y="660" font-family="Menlo,Consolas,monospace" font-size="11" fill="#57606a">[975]</text>
+<line x1="290" y1="656" x2="464" y2="656" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="180.8" y="639" width="398.4" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="380.0" y="650" text-anchor="middle" font-size="11.5" fill="#1f2328">next byte 0x66 → same sequence; then 0xB6 (r_TX_Count reaches 0)</text>
+<path d="M470,694 L498,694 L498,710 L474,710" fill="none" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="506" y="706" font-size="11.5" fill="#1f2328" text-anchor="start">last byte done &amp; r_TX_Count == 0 ⇒ o_SPI_CS_n ← 1, CS_INACTIVE</text>
+<line x1="470" y1="748" x2="116" y2="748" stroke="#0969da" stroke-width="1.4" stroke-dasharray="5 3" marker-end="url(#a)"/>
+<rect x="75.55000000000001" y="731" width="428.9" height="14" fill="#ffffff" opacity="0.9"/>
+<text x="290.0" y="742" text-anchor="middle" font-size="11.5" fill="#0969da">main loop: wait o_TX_Ready===1, o_SPI_CS_n===1, then CS_INACTIVE_CLKS</text>
+<path d="M110,786 L138,786 L138,802 L114,802" fill="none" stroke="#1f2328" stroke-width="1.4" marker-end="url(#a)"/>
+<text x="146" y="798" font-size="11.5" fill="#1f2328" text-anchor="start">&quot;==== TEST 1 COMPLETE ====&quot; → next iteration (reset again)</text>
+<text x="20" y="844" font-size="11.5" fill="#57606a">Solid: stimulus or internal action. Dashed blue: observation / synchronisation on DUT outputs. Green: checker verdict.</text>
+</svg>
